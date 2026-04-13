@@ -1,4 +1,4 @@
-# Card Games API
+# Simple Card Games
 
 ## Description
 Using the deckofcardsapi.com API, this software simulates some simple card games.
