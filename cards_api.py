@@ -42,6 +42,23 @@ card_values_display = {
     "A": "Ace",
 }
 
+card_values_display2 = {
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "5": "5",
+    "6": "6",
+    "7": "7",
+    "8": "8",
+    "9": "9",
+    "0": "10",
+    "J": "Jack",
+    "Q": "Queen",
+    "K": "King",
+    "A": "Ace",
+}
+
 
 baseurl = "https://deckofcardsapi.com/api/deck/"
 
