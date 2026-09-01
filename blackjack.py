@@ -81,20 +81,20 @@ class BlackjackGame:
     def startgame(self):
         if self.active_round == False:
             #print("There is already a game in progress!")
-
             ca.shuffle(self.deck_id)
             self.player_hand = ca.draw_cards(self.deck_id, game)
             self.dealer_hand = ca.draw_cards(self.deck_id, game)
             self.active_round = True
 
     def hitme(self):
-        if hand_eval(self.player_hand) <= 21:
-            self.player_hand = ca.hit_me(self.deck_id, self.player_hand)
-
-    
+        self.player_hand = ca.hit_me(self.deck_id, self.player_hand)
+        if hand_eval(self.player_hand) > 21:
+            return self.stand()
+        
     def stand(self):
         while hand_eval(self.dealer_hand) < 17:
             self.dealer_hand = ca.hit_me(self.deck_id, self.dealer_hand)
+        return self.endround()
         
     
     def endround(self):

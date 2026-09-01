@@ -1,7 +1,7 @@
 import tkinter as tk
+import os
 import blackjack as bj
 import cards_api as ca
-import os
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -76,20 +76,28 @@ class BlackjackGUI:
 
     def hit(self):
         if self.game.active_round == True:
-            self.game.hitme()
+            result = self.game.hitme()
             self.refresh()
+            
+            if result is not None:
+                if result:
+                    self.status.config(text="Player Win")
+                else:
+                    self.status.config(text="Dealer Win")
         else:
             self.status.config(text="You cannot hit while the game is over!")
 
     def stand(self):
-        self.game.stand()
-        self.refresh()
-        result = ""
-        if self.game.endround():
-            result = "Player Win"
+        if self.game.active_round == True:
+            result = self.game.stand()
+            self.refresh()
+
+            if result:
+                self.status.config(text="Player Win")
+            else:
+                self.status.config(text="Dealer Win")
         else:
-            result = "Dealer Win"
-        self.status.config(text=result)
+            self.status.config(text="The game is already over!")
 
     def refresh(self):
         #self.dealer_cards.config(text=ca.hand_display(self.game.dealer_hand))
